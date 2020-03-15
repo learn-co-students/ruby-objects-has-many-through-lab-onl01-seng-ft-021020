@@ -14,7 +14,7 @@ class Doctor
   end
 
   def new_appointment(patient, date)
-    appointment = Appointment.new(patient, self, date)
+    appointment = Appointment.new(date, patient, self)
     self.appointments.last
   end
   
@@ -26,11 +26,9 @@ class Doctor
     end
   end
 
-
-  def patients
-    Appointment.all.map do |appointment|
-      appointment.patients
+def patients
+    appointments.map do |appointment|
+      appointment.patient
     end
   end
-
 end
